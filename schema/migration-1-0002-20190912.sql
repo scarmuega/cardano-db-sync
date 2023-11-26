@@ -24,6 +24,7 @@ BEGIN
           and table_schema = 'public'
           and table_name !~* 'pg_stat_.*'
 	  and table_name != 'local_cache'
+	  and table_name != 'neon_lfc_stats'
     loop
       execute format ('drop view if exists %s cascade ;', vname) ;
       raise notice 'Dropping view : %', vname ;
